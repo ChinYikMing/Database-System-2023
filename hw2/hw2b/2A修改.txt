@@ -1,0 +1,24 @@
+part 5A
+1. aircraft 和 reseravationLimit 的 foreign key 從 ER model 拿掉
+2. cancellableReservation 新增 ID
+3. airport 的 descriptionName 拆開成 description 和 name
+4. stop relationship 改成 many-to-many 因為航班可能會有多個 intermediateStop
+5. 把 intermediateStop 的 arrival 和  departure datetime 放到 relation attributes 
+6. seatMap 是 Blob image
+7. 把 reservationLimit table 刪掉，改成在 Flight 新增一個 reservationLimit  attribute
+8. transfer flight 改成 many-to-many 因為 customer 可能會有多次轉機。
+
+part 6A
+1. Subtitle 是 longText
+2. 把 Subtitle 改成 total participation
+3. supervisor relationship 利用 supervisor_SSN 來設計，如果為 NULL 表示是 supervisor 否則是 employee
+4. Movie 跟 Actor 的 has rel 改成 has_actor 因為是 many-to-many，要獨立出來一個 table
+5. 拿掉 videoServer 的 locationID
+6. videoServer 和 movie 的 store rel 要改成 many-to-many（額外假設一部 movie 不可以只 store 在一台 server）
+7. viewingTransaction 和 billStatement 要改！解決方法：斷開 ViewingTransaction 和 Movie 的 relationship，把 BillStatement 和 Movie 連接一個 many-to-many 的 relationship
+
+
+剩下：
+1. 邏輯設計說明
+2. 檢查所有 attribute 是否都有，有些不能為 null 的要加 not null
+3. 要給 ER model(draw.io 的檔案)
